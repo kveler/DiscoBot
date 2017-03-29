@@ -60,8 +60,9 @@ namespace DiscoBot
             commands = discord.GetService<CommandService>();
 
             RegisterBobCommand();
-
             RegisterVoetbalCommand();
+            RegisterMaxCommand();
+            RegisterhahaCommand();
 
 
             discord.ExecuteAndWait(async () =>
@@ -88,11 +89,34 @@ namespace DiscoBot
                 });
         }
 
+        private void RegisterhahaCommand()
+        {
+            commands.CreateCommand("haHAA")
+                .Do(async (e) =>
+                {
+                    await e.Channel.SendMessage("HaHAA");
+                    
+                });
+        }
+
         private void RegisterBobCommand()
         {
             commands.CreateCommand("bob")
                 .Do(async (e) =>
                 {
+                    int randomBobIndex = rand.Next(randomBob.Length);
+                    string bobToPost = randomBob[randomBobIndex];
+                    await e.Channel.SendFile(bobToPost);
+                });
+        }
+
+        private void RegisterMaxCommand()
+        {
+            commands.CreateCommand("max")
+                .Do(async (e) =>
+                {
+                    await e.Channel.SendMessage("HAHAHAHA Nee");
+                    await e.Channel.SendMessage("Geen gekke max foto maar ook gewoon een foto van bob");
                     int randomBobIndex = rand.Next(randomBob.Length);
                     string bobToPost = randomBob[randomBobIndex];
                     await e.Channel.SendFile(bobToPost);
