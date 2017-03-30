@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
-
 
 using Discord;
 using Discord.Commands;
@@ -25,7 +21,6 @@ namespace DiscoBot
 
         string[] randomBob;
 
-        static HttpClient client = new HttpClient();
 
         public MyBot()
         {
@@ -69,15 +64,6 @@ namespace DiscoBot
             {
                 await discord.Connect("Mjk2NjE2MDQxNDUzMTkxMTcw.C71Nlw.Mpl7EKEaWFg2pIX5ke9qcHsj8oo", TokenType.Bot);
             });
-        }
-
-        static async Task RunAsync()
-        {
-            client.BaseAddress = new Uri("https://api.crowdscores.com/v1");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            Console.ReadLine();
         }
 
         private void RegisterVoetbalCommand()
